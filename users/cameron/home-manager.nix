@@ -14,6 +14,7 @@
   home.packages = [
     pkgs.firefox
     pkgs._1password
+    pkgs.i3blocks
   ];
 
   # Home Manager needs a bit of information about you and the
