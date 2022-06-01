@@ -1,0 +1,102 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+# Change $SCRIPT_DIR to the location of your scripts!
+command=~/.config/i3blocks-contrib/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+# Volume indicator
+#
+# The first parameter sets the step (and units to display)
+# The second parameter overrides the mixer selection
+# See the script for details.
+
+[volume]
+#LABEL=♪ 
+LABEL=VOL 
+interval=once
+signal=10
+#STEP=5%
+#MIXER=[determined automatically]
+#SCONTROL=[determined automatically]
+#NATURAL_MAPPING=0
+
+#[dunst]
+#interval=once
+#format=json
+#markup=pango
+#min_width=50
+#align=center
+
+# Network interface monitoring
+#
+# If the instance is not specified, use the interface used for default route.
+# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
+[iface]
+#IFACE=wlan0
+label=
+color=#a7a7a7
+interval=10
+separator=false
+
+#[bandwidth]
+#interval=5
+#INLABEL=
+#OUTLABEL=
+#INTERFACE=ens32
+
+# Date Time
+#
+[time]
+#command=date '+%Y-%m-%d %H:%M:%S'
+STRFMT=+%Y-%m-%d %H:%M:%S
+interval=1
+
+# Key indicators
+[keyindicator]
+#Allowed keys are CAPS and NUM
+KEY=CAPS
+markup=pango
+interval=once
+signal=11
+#TEXT_ON=CapsLockOn
+#TEXT_OFF=CapsLockOff
+COLOR_ON=#8f9d6a
+COLOR_OFF=#a7a7a7
+#BG_COLOR_ON=
+#BG_COLOR_OFF=
+ 
+[keyindicator]
+KEY=NUM
+markup=pango
+interval=once
+signal=11
+#TEXT_ON=NumLockOn
+#TEXT_OFF=NumLockOff
+COLOR_ON=#8f9d6a
+COLOR_OFF=#a7a7a7
+HIDE_WHEN_OFF=1
