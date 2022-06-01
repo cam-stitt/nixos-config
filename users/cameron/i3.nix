@@ -20,6 +20,18 @@ let
     base0E = "#9b859d";
     base0F = "#9b703f";
   };
+  workspaces = {
+    one   = "1: ";
+    two   = "2: ";
+    three = "3: ";
+    four  = "4: ";
+    five  = "5: ";
+    six   = "6: ";
+    seven = "7: ";
+    eight = "8: " ;
+    nine  = "9: ";
+    ten   = "10: ";
+  };
   modifier = config.xsession.windowManager.i3.config.modifier;
 in
 {
@@ -35,16 +47,10 @@ in
     config = {
       modifier = "Mod4";
       assigns = {
-        "1: " = [{ class = "^code$"; }];
-        "2: " = [{ }];
-        "3: " = [{ class = "^Firefox$"; }];
-        "4: " = [{ class = "^Spotify$"; }];
-        "5: " = [{ class = "^discord$"; }];
-        "6: " = [{ }];
-        "7: " = [{ }];
-        "8: " = [{ }];
-        "9: " = [{ }];
-        "10: " = [{ }];
+        "${workspaces.one}" = [{ class = "^code$"; }];
+        "${workspaces.three}" = [{ class = "^Firefox$"; }];
+        "${workspaces.four}" = [{ class = "^Spotify$"; }];
+        "${workspaces.five}" = [{ class = "^discord$"; }];
       };
       fonts = {
         names = [ "Hack" ];
@@ -153,6 +159,28 @@ in
         "${modifier}+Shift+k" = "move down";
         "${modifier}+Shift+l" = "move up";
         "${modifier}+Shift+semicolon" = "move right";
+
+        "${modifier}+1" = "workspace ${workspaces.one}";
+        "${modifier}+2" = "workspace ${workspaces.two}";
+        "${modifier}+3" = "workspace ${workspaces.three}";
+        "${modifier}+4" = "workspace ${workspaces.four}";
+        "${modifier}+5" = "workspace ${workspaces.five}";
+        "${modifier}+6" = "workspace ${workspaces.six}";
+        "${modifier}+7" = "workspace ${workspaces.seven}";
+        "${modifier}+8" = "workspace ${workspaces.eight}";
+        "${modifier}+9" = "workspace ${workspaces.nine}";
+        "${modifier}+0" = "workspace ${workspaces.ten}";
+
+        "${modifier}+Shift+1" = "move container to workspace ${workspaces.one}";
+        "${modifier}+Shift+2" = "move container to workspace ${workspaces.two}";
+        "${modifier}+Shift+3" = "move container to workspace ${workspaces.three}";
+        "${modifier}+Shift+4" = "move container to workspace ${workspaces.four}";
+        "${modifier}+Shift+5" = "move container to workspace ${workspaces.five}";
+        "${modifier}+Shift+6" = "move container to workspace ${workspaces.six}";
+        "${modifier}+Shift+7" = "move container to workspace ${workspaces.seven}";
+        "${modifier}+Shift+8" = "move container to workspace ${workspaces.eight}";
+        "${modifier}+Shift+9" = "move container to workspace ${workspaces.nine}";
+        "${modifier}+Shift+0" = "move container to workspace ${workspaces.ten}";
       };
     };
     extraConfig = ''

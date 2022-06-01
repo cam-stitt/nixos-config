@@ -13,6 +13,8 @@
       enable = true;
       xkb.layout = "us";
       dpi = 220;
+      #desktopManager.gnome.enable = true;
+      #displayManager.gdm.enable = true;
 
       desktopManager = {
         xterm.enable = false;
@@ -31,9 +33,6 @@
 
       windowManager = {
         i3.enable = true;
-        extraPackages = with pkgs; [
-          i3blocks
-        ];
       };
     };
 
