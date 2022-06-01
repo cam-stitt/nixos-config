@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+message=$(date "${STRFMT}")
+
+echo " $message"
