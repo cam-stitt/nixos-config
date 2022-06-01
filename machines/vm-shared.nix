@@ -44,7 +44,7 @@ in {
   networking.hostName = "dev";
 
   # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "Australia/Brisbane";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -69,7 +69,6 @@ in {
   } else {
     enable = true;
     layout = "us";
-    dpi = 220;
 
     desktopManager = {
       xterm.enable = false;

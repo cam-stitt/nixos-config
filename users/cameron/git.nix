@@ -7,6 +7,10 @@ with lib;
     package = pkgs.gitAndTools.gitFull;
     userName = "Cameron Stitt";
     userEmail = "cameron@cam.st";
+    signing = {
+      key = "CBCD419CDB0EB092";
+      signByDefault = true;
+    };
     extraConfig = {
       core = {
         editor = "nvim";
