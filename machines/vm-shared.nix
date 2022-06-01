@@ -91,6 +91,8 @@
     packages = [
       pkgs.fira-code
       pkgs.jetbrains-mono
+      pkgs.font-awesome
+      pkgs.powerline-fonts
     ];
   };
 
@@ -113,6 +115,23 @@
     # You can test if you don't need this by deleting this and seeing
     # if the clipboard sill works.
     gtkmm3
+
+    # VMware on M1 doesn't support automatic resizing yet and on
+    # my big monitor it doesn't detect the resolution either so we just
+    # manualy create the resolution and switch to it with this script.
+    # This script could be better but its hopefully temporary so just force it.
+    (writeShellScriptBin "xrandr-6k" ''
+      xrandr --newmode "6016x3384_60.00"  1768.50  6016 6544 7216 8416  3384 3387 3392 3503 -hsync +vsync
+      xrandr --addmode Virtual-1 6016x3384_60.00
+    '')
+    (writeShellScriptBin "xrandr-uwhd" ''
+      xrandr --newmode "2560x1080_60.00" 230.00 2560 2720 2992 3424 1080 1083 1093 1120 -hsync +vsync
+      xrandr --addmode Virtual-1 2560x1080_60.00
+      xrandr -s 6016x3384_60.00
+    '')
+    (writeShellScriptBin "xrandr-mbp" ''
+      xrandr -s 2880x1800
+    '')
   ];
 
   # Our default non-specialised desktop environment.
