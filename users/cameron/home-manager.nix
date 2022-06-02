@@ -16,6 +16,9 @@
     pkgs._1password
     pkgs.i3blocks
     pkgs.arandr
+
+    pkgs.go
+    pkgs.gopls
   ];
 
   # Home Manager needs a bit of information about you and the
