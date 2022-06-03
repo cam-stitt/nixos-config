@@ -54,18 +54,17 @@
   };
 
   # Make cursor not tiny on HiDPI screens
-  xsession.pointerCursor = {
+  home.pointerCursor = {
     name = "Vanilla-DMZ";
     package = pkgs.vanilla-dmz;
     size = 64;
+    x11.enable = true;
   };
 
   programs.direnv = {
     enable = true;
     nix-direnv = {
       enable = true;
-      # optional for nix flakes support in home-manager 21.11, not required in home-manager unstable or 22.05
-      enableFlakes = true;
     };
 
     config = {
