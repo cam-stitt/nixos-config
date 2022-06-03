@@ -16,6 +16,7 @@
     pkgs._1password
     pkgs.i3blocks
     pkgs.arandr
+    pkgs.feh
 
     pkgs.go
     pkgs.gopls
