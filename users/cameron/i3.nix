@@ -197,8 +197,7 @@ in
 
       bindsym $mod+shift+x exec i3lock --color "$base00"
 
-      exec_always feh --bg-scale /home/cameron/Pictures/wallpaper.jpeg
-      exec_always compton
+      exec_always feh --bg-fill /home/cameron/Pictures/wallpaper.jpeg
 
       # mode for helping out emacs
       mode "passthrough" {
