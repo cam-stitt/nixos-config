@@ -19,6 +19,9 @@
 
     pkgs.go
     pkgs.gopls
+    pkgs.docker-compose
+    pkgs.docker-compose_2
+    pkgs.docker-buildx
   ];
 
   # Home Manager needs a bit of information about you and the

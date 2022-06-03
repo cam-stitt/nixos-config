@@ -12,5 +12,7 @@
     hashedPassword = "$5$/z/70DzKzOlgRhXi$Vk3bnNgp9qp5zzp9s6muEGiLEfoDYflljBhFoGg7wPC";
   };
 
+  services.redis.enable = true;
+
   nixpkgs.overlays = import ../../lib/overlays.nix;
 }
