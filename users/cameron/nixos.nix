@@ -12,7 +12,10 @@
     hashedPassword = "$5$/z/70DzKzOlgRhXi$Vk3bnNgp9qp5zzp9s6muEGiLEfoDYflljBhFoGg7wPC";
   };
 
-  services.redis.servers.cameron.enable = true;
+  services.redis.servers.cameron = {
+    enable = true;
+    port = 6379;
+  };
 
   nixpkgs.overlays = import ../../lib/overlays.nix;
 }
