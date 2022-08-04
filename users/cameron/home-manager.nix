@@ -18,10 +18,16 @@
     pkgs.arandr
     pkgs.feh
 
+    pkgs.plantuml
+    pkgs.graphviz
+    pkgs.jre8
+
+    pkgs.nomad-bin
+    pkgs.ejson
+    pkgs.jq
     pkgs.go
     pkgs.gopls
     pkgs.docker-compose
-    pkgs.docker-compose_2
     pkgs.docker-buildx
   ];
 
