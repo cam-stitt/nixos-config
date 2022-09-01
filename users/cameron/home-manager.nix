@@ -8,6 +8,7 @@
     ./git.nix
     ./i3.nix
     ./rofi.nix
+    ./emacs.nix
     #./vscode-server.nix
   ];
 
@@ -29,6 +30,7 @@
     pkgs.gopls
     pkgs.docker-compose
     pkgs.docker-buildx
+    pkgs.lsof
   ];
 
   # Home Manager needs a bit of information about you and the
