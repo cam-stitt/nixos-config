@@ -18,6 +18,7 @@
     pkgs.i3blocks
     pkgs.arandr
     pkgs.feh
+    pkgs.qdirstat
 
     pkgs.plantuml
     pkgs.graphviz
@@ -28,9 +29,14 @@
     pkgs.jq
     pkgs.go
     pkgs.gopls
+    pkgs.delve
     pkgs.docker-compose
     pkgs.docker-buildx
     pkgs.lsof
+    pkgs.gcc
+    pkgs.binutils
+    pkgs.zip
+    pkgs.unzip
   ];
 
   # Home Manager needs a bit of information about you and the
