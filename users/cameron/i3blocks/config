@@ -36,8 +36,8 @@ markup=none
 # See the script for details.
 
 [volume]
-#LABEL=♪ 
-LABEL=VOL 
+#LABEL=♪
+LABEL=VOL
 interval=once
 signal=10
 #STEP=5%
@@ -89,7 +89,7 @@ COLOR_ON=#8f9d6a
 COLOR_OFF=#a7a7a7
 #BG_COLOR_ON=
 #BG_COLOR_OFF=
- 
+
 [keyindicator]
 KEY=NUM
 markup=pango
