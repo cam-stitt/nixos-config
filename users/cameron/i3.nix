@@ -32,7 +32,7 @@ let
     nine  = "9: ";
     ten   = "10: ";
   };
-  modifier = config.xsession.windowManager.i3.config.modifier;
+  modifier = "Mod4";
 in
 {
   home.file = {
@@ -45,7 +45,7 @@ in
   xsession.windowManager.i3 = {
     enable = true;
     config = {
-      modifier = "Mod4";
+      modifier = modifier;
       assigns = {
         "${workspaces.one}" = [{ class = "^code$"; }];
         "${workspaces.three}" = [{ class = "^Firefox$"; }];
@@ -184,8 +184,6 @@ in
       };
     };
     extraConfig = ''
-      set $mod ${modifier}
-
       bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
       bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
@@ -195,15 +193,15 @@ in
       bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
       bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
-      bindsym $mod+shift+x exec i3lock --color "$base00"
+      bindsym ${modifier}+shift+x exec i3lock --color "$base00"
 
       exec_always feh --bg-fill /home/cameron/Pictures/wallpaper.jpeg
 
       # mode for helping out emacs
       mode "passthrough" {
-          bindsym $mod+Alt_R mode "default"
+          bindsym ${modifier}+Alt_R mode "default"
       }
-      bindsym $mod+Alt_R mode "passthrough"
+      bindsym ${modifier}+Alt_R mode "passthrough"
     '';
   };
 }
