@@ -23,9 +23,8 @@
     pkgs.plantuml
     pkgs.graphviz
     pkgs.jre8
-    
+
     pkgs.nodejs-16_x
-    pkgs.nomad-bin
     pkgs.ejson
     pkgs.jq
     pkgs.go
