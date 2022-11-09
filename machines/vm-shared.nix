@@ -32,6 +32,12 @@
     "mupdf-1.17.0"
   ];
 
+  # We expect to run the VM on hidpi machines.
+  hardware.video.hidpi.enable = true;
+
+  # enable pulseaudio
+  hardware.pulseaudio.enable = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
