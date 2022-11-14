@@ -48,6 +48,13 @@
     overlays = [
       inputs.neovim-nightly-overlay.overlay
       inputs.zig.overlays.default
+
+      (final: prev: {
+        unstable = import nixpkgs-unstable {
+          system = prev.system;
+          config.allowUnfree = true;
+        };
+      })
     ];
 
     mkSystem = import ./lib/mksystem.nix {
