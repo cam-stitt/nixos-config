@@ -100,6 +100,12 @@
         ibus_1_5_29 = inputs.nixpkgs-old-ibus.legacyPackages.${prev.system}.ibus;
         ibus_1_5_31 = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.ibus;
       })
+      (final: prev: {
+        unstable = import nixpkgs-unstable {
+          system = prev.system;
+          config.allowUnfree = true;
+        };
+      })
     ];
 
     mkSystem = import ./lib/mksystem.nix {
