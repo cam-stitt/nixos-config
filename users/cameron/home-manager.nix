@@ -24,6 +24,8 @@
     pkgs.graphviz
     pkgs.jre8
 
+    pkgs.unstable.obsidian
+
     pkgs.nodejs-16_x
     pkgs.ejson
     pkgs.jq
