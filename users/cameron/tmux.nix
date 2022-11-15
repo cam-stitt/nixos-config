@@ -2,9 +2,6 @@
 
 with lib;
 {
-  # blue #c0eaff
-  # purple #8888cc
-  # highlight #eeee9e
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -60,27 +57,35 @@ with lib;
       # COLOUR (base16)
 
       # default statusbar colors
-      set-option -g status-style "fg=#838184,bg=#323537"
+      #set-option -g status-style "fg=#838184,bg=#323537"
+      set-option -g status-style "fg=#000000,bg=#eaffff"
 
       # default window title colors
-      set-window-option -g window-status-style "fg=#838184,bg=default"
+      #set-window-option -g window-status-style "fg=#838184,bg=default"
+      set-window-option -g window-status-style "fg=#000000,bg=#eaffff"
 
       # active window title colors
-      set-window-option -g window-status-current-style "fg=#f9ee98,bg=default"
+      #set-window-option -g window-status-current-style "fg=#f9ee98,bg=default"
+      set-window-option -g window-status-current-style "fg=#000000,bg=#eaffff"
 
       # pane border
-      set-option -g pane-border-style "fg=#323537"
-      set-option -g pane-active-border-style "fg=#464b50"
+      #set-option -g pane-border-style "fg=#323537"
+      set-option -g pane-border-style "fg=#99994c"
+      #set-option -g pane-active-border-style "fg=#464b50"
+      set-option -g pane-active-border-style "fg=#99994c"
 
       # message text
       set-option -g message-style "fg=#a7a7a7,bg=#323537"
 
       # pane number display
-      set-option -g display-panes-active-colour "#8f9d6a"
-      set-option -g display-panes-colour "#f9ee98"
+      #set-option -g display-panes-active-colour "#8f9d6a"
+      #set-option -g display-panes-colour "#f9ee98"
+      set-option -g display-panes-active-colour "#000000"
+      set-option -g display-panes-colour "#eeee9e"
 
       # clock
-      set-window-option -g clock-mode-colour "#8f9d6a"
+      #set-window-option -g clock-mode-colour "#8f9d6a"
+      set-window-option -g clock-mode-colour "#000000"
 
       # copy mode highligh
       set-window-option -g mode-style "fg=#838184,bg=#464b50"

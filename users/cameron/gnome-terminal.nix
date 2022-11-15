@@ -41,7 +41,7 @@ with lib;
         };
         "d680275a-7464-45d1-a89b-4762a730c078" = {
           visibleName = "Base16 Twilight Dark";
-          default = true;
+          default = false;
           allowBold = true;
           font = "Hack 14";
           colors = {
@@ -68,6 +68,39 @@ with lib;
             cursor = {
               foreground = "#1e1e1e";
               background = "#a7a7a7";
+            };
+            boldColor = null;
+          };
+        };
+        "d790275a-7464-45d1-a89b-4762a730c078" = {
+          visibleName = "Acme";
+          default = true;
+          allowBold = true;
+          font = "Hack 14";
+          colors = {
+            palette = [
+              "#424242"
+              "#b8261e"
+              "#3e8630"
+              "#7f8f29"
+              "#2a8dc5"
+              "#8888c7"
+              "#6aa7a8"
+              "#999957"
+              "#eeeea7"
+              "#f2acaa"
+              "#98ce8f"
+              "#b6b79c"
+              "#a6dcf8"
+              "#d0d1f7"
+              "#b0eced"
+              "#ffffec"
+            ];
+            backgroundColor = "#ffffec";
+            foregroundColor = "#000000";
+            cursor = {
+              background = "#000000";
+              foreground = "#ffffec";
             };
             boldColor = null;
           };

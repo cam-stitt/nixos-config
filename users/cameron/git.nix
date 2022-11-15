@@ -11,6 +11,20 @@ with lib;
       key = "CBCD419CDB0EB092";
       signByDefault = true;
     };
+    aliases = {
+      glog = "log --graph";
+      undo = "reset --soft HEAD^";
+      prune = "fetch --prune";
+    };
+    delta = {
+      enable = true;
+      options = {
+        navigate = true;
+        light = false;
+        line-numbers = true;
+        syntax-theme = "gruvbox-light";
+      };
+    };
     extraConfig = {
       core = {
         editor = "nvim";
