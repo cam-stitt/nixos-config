@@ -78,6 +78,13 @@
     x11.enable = true;
   };
 
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "gruvbox-light";
+    };
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv = {
