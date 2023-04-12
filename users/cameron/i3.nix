@@ -32,7 +32,7 @@ let
     nine  = "9: ";
     ten   = "10: ";
   };
-  modifier = "Mod4";
+  modifier = "Mod1";
 in
 {
   home.file = {

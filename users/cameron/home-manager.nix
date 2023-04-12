@@ -26,6 +26,8 @@
 
     pkgs.unstable.obsidian
 
+    pkgs.rustup
+
     pkgs.nodejs-16_x
     pkgs.ejson
     pkgs.jq
