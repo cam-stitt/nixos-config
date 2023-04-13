@@ -1,6 +1,18 @@
 { config, pkgs, ... }:
 
-{
+let
+  sources = import ../../nix/sources.nix;
+  isDarwin = pkgs.stdenv.isDarwin;
+  isLinux = pkgs.stdenv.isLinux;
+
+  # For our MANPAGER env var
+  # https://github.com/sharkdp/bat/issues/1145
+  manpager = (pkgs.writeShellScriptBin "manpager" (if isDarwin then ''
+    sh -c 'col -bx | bat -l man -p'
+    '' else ''
+    cat "$1" | col -bx | bat --language man --style plain
+  ''));
+in {
   imports = [
     ./tmux.nix
     ./gnome-terminal.nix
@@ -8,9 +20,13 @@
     ./git.nix
     ./i3.nix
     ./rofi.nix
-    ./emacs.nix
+    #./emacs.nix
     #./vscode-server.nix
   ];
+
+  # Home-manager 22.11 requires this be set. We never set it so we have
+  # to use the old state version.
+  home.stateVersion = "18.09";
 
   home.packages = [
     pkgs.firefox
@@ -96,8 +112,9 @@
     config = {
       whitelist = {
         prefix = [
-          "$HOME/projects/hashicorp"
-          "$HOME/projects/cam-stitt"
+          "$HOME/code/hashicorp"
+          "$HOME/code/cam-stitt"
+          "$HOME/code/openpixel"
         ];
 
         exact = ["$HOME/.envrc"];
