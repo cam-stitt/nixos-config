@@ -27,7 +27,7 @@ with lib;
     };
     extraConfig = {
       core = {
-        editor = "nvim";
+        editor = "emacsclient -t";
       };
       commit.gpgsign = true;
       core.askPass = "";
