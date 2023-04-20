@@ -6,6 +6,8 @@ let
   emacsPkg = ( pkgs.emacs.overrideAttrs (oldAttrs: {
     configureFlags = oldAttrs.configureFlags ++
       [ "--without-toolkit-scroll-bars" "--with-x-toolkit=yes" ];
+    buildInputs = oldAttrs.buildInputs ++
+      [ pkgs.gtk3.dev ];
   }));
 in
 {
@@ -16,10 +18,10 @@ in
 
   services.emacs = {
     enable = true;
-    defaultEditor = true;
+    defaultEditor = false;
     package = emacsPkg;
     socketActivation = {
-      enable = true;
+      enable =  false;
     };
   };
 }

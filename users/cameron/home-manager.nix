@@ -20,7 +20,7 @@ in {
     ./git.nix
     ./i3.nix
     ./rofi.nix
-    #./emacs.nix
+    ./emacs.nix
     #./vscode-server.nix
   ];
 
@@ -44,6 +44,7 @@ in {
 
     pkgs.rustup
 
+    pkgs.python3
     pkgs.nodejs-16_x
     pkgs.ejson
     pkgs.jq
@@ -57,6 +58,7 @@ in {
     pkgs.binutils
     pkgs.zip
     pkgs.unzip
+    pkgs.delve
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -64,8 +66,9 @@ in {
   home.username = "cameron";
   home.homeDirectory = "/home/cameron";
 
-  programs.neovim = {
-    enable = true;
+  home.sessionVariables = {
+    EDITOR = "emacsclient -t";
+    VISUAL = "emacsclient -c";
   };
 
   programs.vscode = {

@@ -11,13 +11,13 @@ with lib;
     historyLimit = 10000;
     plugins = with pkgs; [
       {
+        plugin = tmuxPlugins.sensible;
+      }
+      {
         plugin = tmuxPlugins.resurrect;
       }
       {
         plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-        set -g @continuum-restore 'on'
-        '';
       }
     ];
     extraConfig = ''

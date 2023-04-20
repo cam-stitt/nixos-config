@@ -42,7 +42,9 @@ with lib;
       #  source "$BASE16_SHELL/profile_helper.fish"
       #end
 
-      source ~/.config/fish/local.fish
+      if test -e ~/.config/fish/local.fish
+        source ~/.config/fish/local.fish
+      end
     '';
   };
 }
