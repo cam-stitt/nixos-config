@@ -148,8 +148,12 @@ in
           l = "resize shrink height 10 px or 10 ppt";
           semicolon = "resize grow width 10 px or 10 ppt";
         };
+        passthrough = {
+          "${modifier}+Shift+p" = "mode \"default\"";
+        };
       };
       keybindings = mkOptionDefault {
+        "${modifier}+Shift+p" = "mode \"passthrough\"";
         "${modifier}+d" = "exec rofi -no-lazy-grab -show run";
         "${modifier}+j" = "focus left";
         "${modifier}+k" = "focus down";
@@ -196,12 +200,6 @@ in
       bindsym ${modifier}+shift+x exec i3lock --color "$base00"
 
       exec_always feh --bg-fill /home/cameron/Pictures/wallpaper.jpeg
-
-      # mode for helping out emacs
-      mode "passthrough" {
-          bindsym ${modifier}+Alt_R mode "default"
-      }
-      bindsym ${modifier}+Alt_R mode "passthrough"
     '';
   };
 }

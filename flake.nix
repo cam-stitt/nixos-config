@@ -104,6 +104,9 @@
         unstable = import nixpkgs-unstable {
           system = prev.system;
           config.allowUnfree = true;
+          config.permittedInsecurePackages = [
+            "electron-21.4.0"
+          ];
         };
       })
     ];
