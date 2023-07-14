@@ -45,7 +45,7 @@ in {
     pkgs.rustup
 
     pkgs.python3
-    pkgs.nodejs-16_x
+    pkgs.nodejs
     pkgs.ejson
     pkgs.jq
     pkgs.go
