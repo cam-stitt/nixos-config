@@ -32,9 +32,6 @@
     "mupdf-1.17.0"
   ];
 
-  # We expect to run the VM on hidpi machines.
-  hardware.video.hidpi.enable = true;
-
   # enable pulseaudio
   hardware.pulseaudio.enable = true;
 
