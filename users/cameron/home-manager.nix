@@ -59,6 +59,9 @@ in {
     pkgs.zip
     pkgs.unzip
     pkgs.delve
+    pkgs.ruby_3_2
+
+    pkgs.terraform
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -95,7 +98,7 @@ in {
   home.pointerCursor = {
     name = "Vanilla-DMZ";
     package = pkgs.vanilla-dmz;
-    size = 64;
+    size = 128;
     x11.enable = true;
   };
 
