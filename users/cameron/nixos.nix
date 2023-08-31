@@ -12,7 +12,7 @@
     home = "/home/cameron";
     extraGroups = [ "docker" "wheel" ];
     shell = pkgs.fish;
-    hashedPassword = "$5$/z/70DzKzOlgRhXi$Vk3bnNgp9qp5zzp9s6muEGiLEfoDYflljBhFoGg7wPC";
+    hashedPassword = "$6$SPf.1ec4OeNHM7Uy$5dJ40W1I0SJp3eFLgiMEsQB5ya2ExtnxKgSFYascMCyui9zMoH7AVxA71E9H7eensBMWlQ2aY2ilHUSG3HNB21";
   };
 
   services.redis.servers.cameron = {
