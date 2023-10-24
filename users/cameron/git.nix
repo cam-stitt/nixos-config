@@ -26,12 +26,11 @@ with lib;
       };
     };
     extraConfig = {
-      core = {
-        editor = "emacsclient -t";
-      };
+      branch.autosetuprebase = "always";
+      core.askPass = ""; # needs to be empty to use terminal for ask pass
+      credential.helper = "store"; # want to make this more secure
+      push.default = "tracking";
       commit.gpgsign = true;
-      core.askPass = "";
-      credential.helper = "/etc/profiles/per-user/cameron/bin/git-credential-libsecret";
       url = {
         "git@github.com:" = {
           insteadOf = "https://github.com/";
