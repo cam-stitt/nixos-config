@@ -48,16 +48,6 @@
     overlays = [
       inputs.neovim-nightly-overlay.overlay
       inputs.zig.overlays.default
-
-      (final: prev: {
-        unstable = import nixpkgs-unstable {
-          system = prev.system;
-          config.allowUnfree = true;
-          config.permittedInsecurePackages = [
-            "electron-21.4.0"
-          ];
-        };
-      })
     ];
 
     mkSystem = import ./lib/mksystem.nix {
@@ -91,9 +81,10 @@
     };
 
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" {
-      system = "aarch64-darwin";
-      user   = "cameron";
-      darwin = true;
+      system    = "aarch64-darwin";
+      user      = "cameron";
+      username  = "cameronstitt";
+      darwin    = true;
     };
   };
 }
