@@ -142,9 +142,10 @@
     };
 
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" {
-      system = "aarch64-darwin";
-      user   = "cameron";
-      darwin = true;
+      system    = "aarch64-darwin";
+      user      = "cameron";
+      username  = "cameronstitt";
+      darwin    = true;
     };
   };
 }

@@ -1,4 +1,6 @@
-{ config, pkgs, ... }:
+{ isWSL, inputs, ... }:
+
+{ config, lib, pkgs, ... }:
 
 let
   sources = import ../../nix/sources.nix;
@@ -15,13 +17,10 @@ let
 in {
   imports = [
     ./tmux.nix
-    ./gnome-terminal.nix
     ./fish.nix
     ./git.nix
-    ./i3.nix
-    ./rofi.nix
     ./emacs.nix
-    #./vscode-server.nix
+    ./kitty.nix
   ];
 
   # Home-manager 22.11 requires this be set. We never set it so we have
@@ -29,45 +28,21 @@ in {
   home.stateVersion = "18.09";
 
   home.packages = [
+    pkgs.jq
+    pkgs.go
+    pkgs.gopls
+    pkgs.delve
+
+    pkgs.hack-font
+    pkgs.nerdfonts
+    pkgs.font-awesome
+  ] ++ (lib.optionals (isLinux && !isWSL) [
     pkgs.firefox
     pkgs._1password
     pkgs.i3blocks
     pkgs.arandr
     pkgs.feh
-    pkgs.qdirstat
-
-    pkgs.plantuml
-    pkgs.graphviz
-    pkgs.jre8
-
-    pkgs.unstable.obsidian
-
-    pkgs.rustup
-
-    pkgs.python3
-    pkgs.nodejs
-    pkgs.ejson
-    pkgs.jq
-    pkgs.go
-    pkgs.gopls
-    pkgs.delve
-    pkgs.docker-compose
-    pkgs.docker-buildx
-    pkgs.lsof
-    pkgs.gcc
-    pkgs.binutils
-    pkgs.zip
-    pkgs.unzip
-    pkgs.delve
-    pkgs.ruby_3_2
-
-    pkgs.terraform
-  ];
-
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "cameron";
-  home.homeDirectory = "/home/cameron";
+  ]);
 
   home.sessionVariables = {
     EDITOR = "emacsclient -t";
@@ -75,11 +50,11 @@ in {
   };
 
   programs.vscode = {
-    enable = true;
+    enable = isLinux && !isWSL;
   };
 
   programs.gpg = {
-    enable = true;
+    enable = isLinux && !isWSL;
 
     settings = {
       keyid-format = "LONG";
@@ -87,7 +62,7 @@ in {
   };
 
   services.gpg-agent = {
-    enable = true;
+    enable = isLinux && !isWSL;
     pinentryFlavor = "tty";
     enableSshSupport = true;
     defaultCacheTtl = 31536000;
@@ -95,7 +70,7 @@ in {
   };
 
   # Make cursor not tiny on HiDPI screens
-  home.pointerCursor = {
+  home.pointerCursor = lib.mkIf (isLinux && !isWSL) {
     name = "Vanilla-DMZ";
     package = pkgs.vanilla-dmz;
     size = 128;
@@ -118,9 +93,7 @@ in {
     config = {
       whitelist = {
         prefix = [
-          "$HOME/code/hashicorp"
-          "$HOME/code/cam-stitt"
-          "$HOME/code/openpixel"
+          "$HOME/code"
         ];
 
         exact = ["$HOME/.envrc"];
@@ -129,7 +102,28 @@ in {
   };
 
   home.file = {
+    ".config/kitty" = {
+      enable = true;
+      recursive = true;
+      source = ./kitty;
+    };
+    ".yabairc" = {
+      enable = isDarwin;
+      source = ./yabai/.yabairc;
+      executable = true;
+    };
+    ".skhdrc" = {
+      enable = isDarwin;
+      source = ./skhd/.skhdrc;
+      executable = true;
+    };
+    ".config/sketchybar" = {
+      enable = isDarwin;
+      source = ./sketchybar;
+      executable = true;
+    };
     ".config/i3blocks" = {
+      enable = (isLinux && !isWSL);
       recursive = true;
       source = ./i3blocks;
     };
@@ -137,7 +131,7 @@ in {
 
   # required for vscode authentication
   services.gnome-keyring = {
-    enable = true;
+    enable = (isLinux && !isWSL);
     components = [ "pkcs11" "secrets" "ssh" ];
   };
 }
