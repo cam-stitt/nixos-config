@@ -1,8 +1,9 @@
 { config, pkgs, lib, ... }:
 
-
 with lib;
 let
+  isDarwin = pkgs.stdenv.isDarwin;
+
   emacsPkg = ( pkgs.emacs.overrideAttrs (oldAttrs: {
     configureFlags = oldAttrs.configureFlags ++
       [ "--without-toolkit-scroll-bars" "--with-x-toolkit=yes" ];
@@ -17,11 +18,11 @@ in
   };
 
   services.emacs = {
-    enable = true;
+    enable = !isDarwin;
     defaultEditor = false;
     package = emacsPkg;
     socketActivation = {
-      enable =  false;
+      enable = true;
     };
   };
 }
