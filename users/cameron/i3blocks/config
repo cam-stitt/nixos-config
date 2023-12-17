@@ -37,7 +37,7 @@ markup=none
 
 [volume]
 #LABEL=♪
-LABEL=
+LABEL=󰕿
 interval=once
 signal=10
 #STEP=5%
@@ -58,7 +58,7 @@ signal=10
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
 #IFACE=wlan0
-label=
+label=
 interval=10
 separator=false
 
