@@ -21,6 +21,16 @@ in {
     ./git.nix
     ./emacs.nix
     ./kitty.nix
+    (
+      import ./i3.nix (
+        { isWSL = isWSL; isLinux = isLinux; }
+      )
+    )
+    (
+      import ./rofi.nix (
+        { isWSL = isWSL; isLinux = isLinux; }
+      )
+    )
   ];
 
   # Home-manager 22.11 requires this be set. We never set it so we have
@@ -42,6 +52,7 @@ in {
     pkgs.i3blocks
     pkgs.arandr
     pkgs.feh
+    pkgs.ngrok
   ]);
 
   home.sessionVariables = {
