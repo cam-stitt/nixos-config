@@ -1,3 +1,5 @@
+{ isWSL, isLinux, ... }:
+
 { config, pkgs, lib, ... }:
 
 with lib;
@@ -24,9 +26,9 @@ let
 in
 {
   programs.rofi = {
-    enable = true;
+    enable = (isLinux && !isWSL);
     cycle = true;
-    font = "Hack 12";
+    font = "Hack Nerd Font 12";
     extraConfig = {
       modi = "run,drun,window";
       fixed-num-lines = true;

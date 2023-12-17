@@ -1,3 +1,5 @@
+{ isWSL, isLinux, ... }:
+
 { config, pkgs, lib, ... }:
 
 with lib;
@@ -21,16 +23,13 @@ let
     base0F = "#9b703f";
   };
   workspaces = {
-    one   = "1: ";
-    two   = "2: ";
-    three = "3: ";
-    four  = "4: ";
-    five  = "5: ";
-    six   = "6: ";
-    seven = "7: ";
-    eight = "8: " ;
-    nine  = "9: ";
-    ten   = "10: ";
+    one   = "1:";
+    two   = "2:";
+    three = "3:";
+    four  = "4:";
+    five  = "5:";
+    six   = "6:󰯜";
+    seven = "7:";
   };
   modifier = "Mod1";
 in
@@ -39,22 +38,26 @@ in
     ".config/i3blocks-contrib" = {
       recursive = true;
       source = ./i3blocks-contrib;
+      enable = (isLinux && !isWSL);
     };
   };
 
   xsession.windowManager.i3 = {
-    enable = true;
+    enable = (isLinux && !isWSL);
     config = {
       modifier = modifier;
       assigns = {
-        "${workspaces.one}" = [{ class = "^code$"; }];
-        "${workspaces.three}" = [{ class = "^Firefox$"; }];
-        "${workspaces.four}" = [{ class = "^Spotify$"; }];
-        "${workspaces.five}" = [{ class = "^discord$"; }];
+        "${workspaces.two}" = [{ class = "^code$"; }];
+        "${workspaces.four}" = [{ class = "^Firefox$"; }];
+        "${workspaces.five}" = [{ class = "^Spotify$"; }];
+        "${workspaces.one}" = [{ class = "^discord$"; }];
       };
       fonts = {
-        names = [ "Hack" ];
+        names = [ "Hack Nerd Font" ];
         size = 14.0;
+      };
+      gaps = {
+        inner = 20;
       };
       colors = {
         focused = {
@@ -98,8 +101,9 @@ in
         {
           statusCommand = "i3blocks";
           position = "bottom";
+          workspaceNumbers = false;
           fonts = {
-            names = [ "Hack" "Font Awesome" ];
+            names = [ "Hack Nerd Font" ];
             size = 14.0;
           };
           colors = {
@@ -133,6 +137,9 @@ in
               text = colors.base00;
             };
           };
+          extraConfig = ''
+            workspace_min_width 60
+          '';
         }
       ];
       modes = {
@@ -155,6 +162,7 @@ in
       keybindings = mkOptionDefault {
         "${modifier}+Shift+p" = "mode \"passthrough\"";
         "${modifier}+d" = "exec rofi -no-lazy-grab -show run";
+        "${modifier}+Return" = "exec kitty";
         "${modifier}+j" = "focus left";
         "${modifier}+k" = "focus down";
         "${modifier}+l" = "focus up";
@@ -171,9 +179,6 @@ in
         "${modifier}+5" = "workspace ${workspaces.five}";
         "${modifier}+6" = "workspace ${workspaces.six}";
         "${modifier}+7" = "workspace ${workspaces.seven}";
-        "${modifier}+8" = "workspace ${workspaces.eight}";
-        "${modifier}+9" = "workspace ${workspaces.nine}";
-        "${modifier}+0" = "workspace ${workspaces.ten}";
 
         "${modifier}+Shift+1" = "move container to workspace ${workspaces.one}";
         "${modifier}+Shift+2" = "move container to workspace ${workspaces.two}";
@@ -182,9 +187,6 @@ in
         "${modifier}+Shift+5" = "move container to workspace ${workspaces.five}";
         "${modifier}+Shift+6" = "move container to workspace ${workspaces.six}";
         "${modifier}+Shift+7" = "move container to workspace ${workspaces.seven}";
-        "${modifier}+Shift+8" = "move container to workspace ${workspaces.eight}";
-        "${modifier}+Shift+9" = "move container to workspace ${workspaces.nine}";
-        "${modifier}+Shift+0" = "move container to workspace ${workspaces.ten}";
       };
     };
     extraConfig = ''
@@ -199,7 +201,8 @@ in
 
       bindsym ${modifier}+shift+x exec i3lock --color "$base00"
 
-      exec_always feh --bg-fill /home/cameron/Pictures/wallpaper.jpeg
+      exec --no-startup-id xsetroot -solid "#d0d1f7" 
+      #exec_always feh --bg-fill /home/cameron/Pictures/wallpaper.jpeg
     '';
   };
 }
