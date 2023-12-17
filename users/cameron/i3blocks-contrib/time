@@ -2,4 +2,4 @@
 
 message=$(date "${STRFMT}")
 
-echo " $message"
+echo "󰥔 $message"
