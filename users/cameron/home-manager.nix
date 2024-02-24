@@ -42,6 +42,7 @@ in {
     pkgs.go
     pkgs.gopls
     pkgs.delve
+    pkgs.gh
 
     pkgs.hack-font
     pkgs.nerdfonts
@@ -131,6 +132,7 @@ in {
     ".config/sketchybar" = {
       enable = isDarwin;
       source = ./sketchybar;
+      recursive = true;
       executable = true;
     };
     ".config/i3blocks" = {
