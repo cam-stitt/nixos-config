@@ -53,7 +53,19 @@ in
       }
 
       {
+        name = "hashicorp/tap/vault";
+      }
+
+      {
         name = "hashicorp/internal/tfcdev";
+      }
+
+      {
+        name = "python";
+      }
+
+      {
+        name = "python-tk";
       }
       
     ];
