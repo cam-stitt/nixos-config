@@ -124,7 +124,7 @@ in {
       source = ./yabai/.yabairc;
       executable = true;
     };
-    ".skhdrc" = {`
+    ".skhdrc" = {
       enable = isDarwin;
       source = ./skhd/.skhdrc;
       executable = true;
