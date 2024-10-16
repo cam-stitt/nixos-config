@@ -75,7 +75,7 @@ in {
 
   services.gpg-agent = {
     enable = isLinux && !isWSL;
-    pinentryFlavor = "tty";
+    pinentryPackage = pkgs.pinentry-tty;
     enableSshSupport = true;
     defaultCacheTtl = 31536000;
     maxCacheTtl = 31536000;
@@ -124,13 +124,13 @@ in {
       source = ./yabai/.yabairc;
       executable = true;
     };
-    ".skhdrc" = {
+    ".skhdrc" = {`
       enable = isDarwin;
       source = ./skhd/.skhdrc;
       executable = true;
     };
     ".config/sketchybar" = {
-      enable = isDarwin;
+      enable = false;
       source = ./sketchybar;
       recursive = true;
       executable = true;
