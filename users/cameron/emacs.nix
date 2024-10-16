@@ -4,7 +4,7 @@ with lib;
 let
   isDarwin = pkgs.stdenv.isDarwin;
 
-  emacsPkg = ( pkgs.emacs.overrideAttrs (oldAttrs: {
+  emacsPkg = if isDarwin then pkgs.emacs else ( pkgs.emacs.overrideAttrs (oldAttrs: {
     configureFlags = oldAttrs.configureFlags ++
       [ "--without-toolkit-scroll-bars" "--with-x-toolkit=yes" ];
     buildInputs = oldAttrs.buildInputs ++
