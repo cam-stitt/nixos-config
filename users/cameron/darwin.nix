@@ -1,13 +1,5 @@
 { inputs, pkgs, ... }:
 
-let
-  emacsPkg = ( pkgs.emacs.overrideAttrs (oldAttrs: {
-    configureFlags = oldAttrs.configureFlags ++
-      [ "--without-toolkit-scroll-bars" "--with-x-toolkit=yes" ];
-    buildInputs = oldAttrs.buildInputs ++
-      [ pkgs.gtk3.dev ];
-  }));
-in
 {
   users.users.cameronstitt = {
     home = "/Users/cameronstitt";
@@ -17,7 +9,7 @@ in
 
   services.emacs = {
     enable = true;
-    package = emacsPkg;
+    package = pkgs.emacs;
   };
 
   services.sketchybar = {
