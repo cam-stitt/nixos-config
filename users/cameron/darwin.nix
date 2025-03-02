@@ -49,6 +49,10 @@
       }
 
       {
+        name = "hashicorp/tap/terraform";
+      }
+
+      {
         name = "hashicorp/internal/tfcdev";
       }
 
@@ -59,7 +63,6 @@
       {
         name = "python-tk";
       }
-      
     ];
 
     taps = [
@@ -85,6 +88,7 @@
       "postman"
       "google-chrome"
       "docker"
+      "pgadmin4"
     ];
   };
 }
