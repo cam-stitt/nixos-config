@@ -85,7 +85,7 @@
         ibus_1_5_31 = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.ibus;
       })
       (final: prev: {
-        unstable = import nixpkgs-unstable {
+        unstable = import inputs.nixpkgs-unstable {
           system = prev.system;
           config.allowUnfree = true;
           config.permittedInsecurePackages = [
