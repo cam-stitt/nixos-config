@@ -12,10 +12,6 @@
     package = pkgs.emacs;
   };
 
-  services.sketchybar = {
-    enable = false;
-  };
-
   homebrew = {
     enable = true;
     brews = [

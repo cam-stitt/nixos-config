@@ -20,22 +20,13 @@ in {
     ./fish.nix
     ./git.nix
     ./emacs.nix
-    ./kitty.nix
-    (
-      import ./i3.nix (
-        { isWSL = isWSL; isLinux = isLinux; }
-      )
-    )
-    (
-      import ./rofi.nix (
-        { isWSL = isWSL; isLinux = isLinux; }
-      )
-    )
   ];
 
   # Home-manager 22.11 requires this be set. We never set it so we have
   # to use the old state version.
   home.stateVersion = "18.09";
+
+  xdg.enable = true;
 
   home.packages = [
     pkgs.jq
@@ -48,12 +39,14 @@ in {
     pkgs.nerdfonts
     pkgs.font-awesome
   ] ++ (lib.optionals (isLinux && !isWSL) [
+    pkgs.rofi
     pkgs.firefox
     pkgs._1password
     pkgs.i3blocks
     pkgs.arandr
     pkgs.feh
     pkgs.ngrok
+    pkgs.pgadmin4
   ]);
 
   home.sessionVariables = {
@@ -113,12 +106,25 @@ in {
     };
   };
 
-  home.file = {
-    ".config/kitty" = {
+  programs.kitty = {
       enable = true;
-      recursive = true;
-      source = ./kitty;
-    };
+      darwinLaunchOptions = [
+          "--single-instance"
+      ];
+      environment = {
+          #"LS_COLORS" = "0";
+      };
+      extraConfig = builtins.readFile ./kitty;
+      shellIntegration = {
+          enableFishIntegration = true;
+      };
+  };
+
+  # xsession.windowManager.i3 = {
+  #   enable = (isLinux && !isWSL);
+  # };
+
+  home.file = {
     ".yabairc" = {
       enable = isDarwin;
       source = ./yabai/.yabairc;
@@ -129,17 +135,21 @@ in {
       source = ./skhd/.skhdrc;
       executable = true;
     };
-    ".config/sketchybar" = {
-      enable = false;
-      source = ./sketchybar;
-      recursive = true;
-      executable = true;
-    };
     ".config/i3blocks" = {
       enable = (isLinux && !isWSL);
       recursive = true;
       source = ./i3blocks;
     };
+    ".config/i3blocks-contrib" = {
+      recursive = true;
+      source = ./i3blocks-contrib;
+      enable = (isLinux && !isWSL);
+    };
+  };
+
+  xdg.configFile = {
+    "i3/config".text = builtins.readFile ./i3;
+    "rofi/config.rasi".text = builtins.readFile ./rofi;
   };
 
   # required for vscode authentication

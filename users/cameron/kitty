@@ -1,3 +1,9 @@
+font_family Hack Nerd Font
+font_size 14.0
+
+tab_bar_style powerline
+active_tab_font_style bold
+
 # The basic colors
 foreground              #000000
 background              #ffffea
