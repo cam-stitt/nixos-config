@@ -1,0 +1,226 @@
+set $mod Mod1
+
+#----------------------------------------------------------------------
+# Look & Feel
+#----------------------------------------------------------------------
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Hack Nerd Font 14.000000
+
+# Window visuals
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders none
+focus_wrapping yes
+focus_follows_mouse yes
+focus_on_window_activation smart
+mouse_warping output
+workspace_layout default
+workspace_auto_back_and_forth no
+
+#class                        border  backgr  text    split
+client.focused                #a7a7a7 #7587a6 #1e1e1e #7587a6 #afc4db
+client.focused_inactive       #323537 #323537 #a7a7a7 #5f5a60 #323537
+client.unfocused              #323537 #7587a6 #a7a7a7 #323537 #323537
+client.urgent                 #cf6a4c #cf6a4c #1e1e1e #cf6a4c #cf6a4c
+client.placeholder            #1e1e1e #1e1e1e #a7a7a7 #1e1e1e #1e1e1e
+client.background             #ffffff
+
+#----------------------------------------------------------------------
+# Keybindings
+#----------------------------------------------------------------------
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+bindsym $mod+d exec rofi -no-lazy-grab -show run
+
+# start a terminal
+bindsym $mod+Return exec kitty
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+
+bindsym $mod+semicolon focus right
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+
+# move focused window
+bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up move up
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+Shift+a focus parent
+
+# focus the child container
+bindsym $mod+Shift+d focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:󰯜"
+set $ws7 "7:"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'
+
+bindsym $mod+Shift+minus move scratchpad
+
+bindsym $mod+minus scratchpad show
+
+#----------------------------------------------------------------------
+# Passthrough Mode
+#----------------------------------------------------------------------
+set $mode_passthrough Passthrough i3 commands
+mode "$mode_passthrough" {
+  bindsym $mod+Shift+p mode "default"
+}
+
+bindsym $mod+Shift+p mode "$mode_passthrough"
+
+#----------------------------------------------------------------------
+# Resize Mode
+#----------------------------------------------------------------------
+set $mode_resize Resize / Move
+
+bindsym $mod+r mode "$mode_resize"
+
+mode "mode_resize" {
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym j resize shrink width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym l resize shrink height 10 px or 10 ppt
+  bindsym semicolon resize grow width 10 px or 10 ppt
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+}
+
+#----------------------------------------------------------------------
+# System Mode
+#----------------------------------------------------------------------
+# shutdown / restart / suspend...
+set $mode_system System (e) logout, (r) reboot, (Ctrl+s) shutdown
+
+mode "$mode_system" {
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+BackSpace mode "$mode_system"
+
+# assign apps to windows
+assign [class="^discord$"] 1:
+assign [class="^code$"] 2:
+assign [window_role="^(?i)browser$"] 4:
+assign [class="^Spotify$"] 5:
+
+# Start i3 bar using i3blocks
+bar {
+  font pango:Hack Nerd Font 14.000000
+  mode dock
+  hidden_state hide
+  position bottom
+  status_command i3blocks
+  workspace_buttons yes
+  strip_workspace_numbers yes
+  tray_output primary
+  colors {
+    background #1e1e1e
+    statusline #838184
+    separator #323537
+    focused_workspace #a7a7a7 #7587a6 #1e1e1e
+    active_workspace #a7a7a7 #5f5a60 #1e1e1e
+    inactive_workspace #5f5a60 #323537 #a7a7a7
+    urgent_workspace #cf6a4c #cf6a4c #1e1e1e
+    binding_mode #1e1e1e #f9ee98 #1e1e1e
+  }
+  workspace_min_width 60
+}
+
+gaps inner 20
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+
+# Use pactl to adjust volume in PulseAudio.
+# change volume or toggle mute
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
+
+bindsym $mod+shift+x exec i3lock --color "$base00"
+
+exec --no-startup-id xsetroot -solid "#d0d1f7" 
+#exec_always feh --bg-fill /home/cameron/Pictures/wallpaper.jpeg

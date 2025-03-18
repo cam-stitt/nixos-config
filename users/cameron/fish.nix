@@ -14,6 +14,15 @@ with lib;
           sha256 = "134sz3f98gb6z2vgd5kkm6dd8pka5gijk843c32s616w35y07sga";
         };
       }
+      {
+        name = "bass";
+        src = pkgs.fetchFromGitHub {
+          owner = "edc";
+          repo = "bass";
+          rev = "v1.0";
+          sha256 = "XpB8u2CcX7jkd+FT3AYJtGwBtmNcLXtfMyT/z7gfyQw=";
+        };
+      }
       # {
       #   name = "fish-ssh-agent";
       #   src = pkgs.fetchFromGitHub {

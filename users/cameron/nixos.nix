@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # https://github.com/nix-community/home-manager/pull/2408
@@ -19,6 +19,16 @@
     enable = true;
     port = 6379;
   };
+
+  # Without this, nix complains of a clash between pipewire and pulseaudio.
+  # Pipewire seems to be set through `gnome-remote-desktop` module, which
+  # I cannot find any mention of within this repository.
+  services.pipewire = {
+    enable = lib.mkForce false;
+  };
+
+  # reset DPI to suit monitor
+  services.xserver.dpi = 120;
 
   nixpkgs.overlays = import ../../lib/overlays.nix;
 }
