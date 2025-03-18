@@ -28,7 +28,7 @@
   };
 
   # reset DPI to suit monitor
-  services.xserver.dpi = 120;
+  services.xserver.dpi = lib.mkForce 120;
 
   nixpkgs.overlays = import ../../lib/overlays.nix;
 }
