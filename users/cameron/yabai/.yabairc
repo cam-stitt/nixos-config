@@ -55,6 +55,7 @@ yabai -m rule --add app='^Streamlabs' manage=off
 # application space rules
 yabai -m rule --add app='iTerm' space=3
 yabai -m rule --add app='Code' space=2
+yabai -m rule --add app="emacs" space=2 manage=on
 yabai -m rule --add app='Slack' space=1
 yabai -m rule --add app='Spark Desktop' space=1
 yabai -m rule --add app='Firefox' space=4
