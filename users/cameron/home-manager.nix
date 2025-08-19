@@ -34,10 +34,11 @@ in {
     pkgs.gopls
     pkgs.delve
     pkgs.gh
+    pkgs.libgccjit
 
     pkgs.hack-font
-    pkgs.nerdfonts
     pkgs.font-awesome
+    pkgs.devbox
   ] ++ (lib.optionals (isLinux && !isWSL) [
     pkgs.rofi
     pkgs.firefox
@@ -47,7 +48,7 @@ in {
     pkgs.feh
     pkgs.ngrok
     pkgs.pgadmin4
-  ]);
+  ]) ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   home.sessionVariables = {
     EDITOR = "emacsclient -t";
@@ -68,7 +69,7 @@ in {
 
   services.gpg-agent = {
     enable = isLinux && !isWSL;
-    pinentryPackage = pkgs.pinentry-tty;
+    pinentry.package = pkgs.pinentry-tty;
     enableSshSupport = true;
     defaultCacheTtl = 31536000;
     maxCacheTtl = 31536000;

@@ -37,7 +37,7 @@ with lib;
       set -xg TERM "xterm-256color"
       set -xg GPG_TTY (tty)
 
-      #alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+      alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
       fish_add_path $HOME/op $HOME/go/bin
 
@@ -83,9 +83,9 @@ with lib;
           set -xg SSH_ENV $HOME/.ssh/environment
       end
 
-      if not __ssh_agent_is_started
-          __ssh_agent_start
-      end
+      #if not __ssh_agent_is_started
+      #    __ssh_agent_start
+      #end
 
       #-------------------------------------------------------------------------------
       # Kitty Terminal
