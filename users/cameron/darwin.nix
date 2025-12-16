@@ -7,9 +7,9 @@
     name = "cameronstitt";
   };
 
-  services.emacs = {
-    enable = true;
-  };
+  #services.emacs = {
+  #  enable = true;
+  #};
 
   homebrew = {
     enable = true;
@@ -33,6 +33,10 @@
 
       {
         name = "hashicorp/security/doormat-cli";
+      }
+
+      {
+        name = "hashicorp/internal/docker-credential-doormat";
       }
 
       {
@@ -75,6 +79,10 @@
         name = "hashicorp/internal";
         clone_target = "git@github.com:hashicorp/homebrew-internal.git";
       }
+
+      {
+        name = "railwaycat/emacsmacport";
+      }
     ];
 
     casks = [
@@ -84,6 +92,7 @@
       "google-chrome"
       "docker"
       "pgadmin4"
+      "emacs-mac"
     ];
   };
 

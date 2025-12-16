@@ -5,7 +5,7 @@ let
 in
 {
   programs.emacs = {
-    enable = true;
+    enable = !isDarwin;
   };
 
   services.emacs = {
