@@ -146,4 +146,4 @@ vm/switch:
 # Build a WSL installer
 .PHONY: wsl
 wsl:
-	 nix build ".#nixosConfigurations.wsl.config.system.build.installer"
+	 nix --extra-experimental-features "nix-command flakes" build ".#nixosConfigurations.wsl.config.system.build.installer"
