@@ -30,5 +30,8 @@
   # reset DPI to suit monitor
   services.xserver.dpi = lib.mkForce 120;
 
+  # required for WSL environments to remotely run vscode
+  programs.nix-ld.enable = true;
+
   nixpkgs.overlays = import ../../lib/overlays.nix;
 }

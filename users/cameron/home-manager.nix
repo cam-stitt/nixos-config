@@ -19,8 +19,9 @@ in {
     ./tmux.nix
     ./fish.nix
     ./git.nix
+  ] ++ (lib.optionals (!isWSL) [
     ./emacs.nix
-  ];
+  ]);
 
   # Home-manager 22.11 requires this be set. We never set it so we have
   # to use the old state version.
@@ -39,6 +40,7 @@ in {
     pkgs.hack-font
     pkgs.font-awesome
     pkgs.devbox
+    pkgs.wget
   ] ++ (lib.optionals (isLinux && !isWSL) [
     pkgs.rofi
     pkgs.firefox
@@ -60,7 +62,7 @@ in {
   };
 
   programs.gpg = {
-    enable = isLinux && !isWSL;
+    enable = isLinux;
 
     settings = {
       keyid-format = "LONG";
@@ -68,7 +70,7 @@ in {
   };
 
   services.gpg-agent = {
-    enable = isLinux && !isWSL;
+    enable = isLinux;
     pinentry.package = pkgs.pinentry-tty;
     enableSshSupport = true;
     defaultCacheTtl = 31536000;
@@ -113,7 +115,6 @@ in {
           "--single-instance"
       ];
       environment = {
-          #"LS_COLORS" = "0";
       };
       extraConfig = builtins.readFile ./kitty;
       shellIntegration = {
