@@ -33,10 +33,10 @@ with lib;
       bind -r l select-pane -R
 
       # `y` will copy to system clipboard
-      bind -T copy-mode y copy-pipe "xclip -sel clip -i"
+      #bind -T copy-mode y copy-pipe-and-cancel "xclip -sel clip -i"
       # we can make a selection using mouse, and it will copy
       # but not leave copy mode!
-      bind-key -T copy-mode MouseDragEnd1Pane send-keys -X copy-pipe "xclip -sel clip -i" \; send -X clear-selection
+      #bind-key -T copy-mode MouseDragEnd1Pane send-keys -X copy-pipe-and-canel "xclip -sel clip -i" \; send -X clear-selection
 
       # vertical splits
       unbind g
@@ -92,6 +92,9 @@ with lib;
 
       # bell
       set-window-option -g window-status-bell-style "fg=#323537,bg=#cf6a4c"
+
+      set-option -gu default-command
+      set-option -g default-shell "$SHELL"
     '';
   };
 }
