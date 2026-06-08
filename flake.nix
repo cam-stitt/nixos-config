@@ -27,8 +27,8 @@
     nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
 
     # https://github.com/cpick/nix-rosetta-builder
-    nix-rosetta-builder.url = "github:cpick/nix-rosetta-builder";
-    nix-rosetta-builder.inputs.nixpkgs.follows = "nixpkgs";
+    #nix-rosetta-builder.url = "github:cpick/nix-rosetta-builder";
+    #nix-rosetta-builder.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager = {
       # We need to use nightly home-manager because it contains this

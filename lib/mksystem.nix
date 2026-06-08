@@ -47,15 +47,15 @@ in systemFunc rec {
     # An existing Linux builder is needed to initially bootstrap
     # `nix-rosetta-builder`. After the first `darwin-rebuild switch`,
     # `nix-rosetta-builder` can rebuild itself.
-    inputs.nix-rosetta-builder.darwinModules.default
-    {
+    #inputs.nix-rosetta-builder.darwinModules.default
+    #{
       # see available options in module.nix's `options.nix-rosetta-builder`
-      nix-rosetta-builder.onDemand = true;
+      #nix-rosetta-builder.onDemand = true;
 
       # `nix-rosetta-builder` depends on `lima`, which is currently
       # marked insecure in nixpkgs.
-      nixpkgs.config.permittedInsecurePackages = [ "lima-1.2.2" ];
-    }
+      #nixpkgs.config.permittedInsecurePackages = [ "lima-1.2.2" ];
+    #}
   ] ++ [
     machineConfig
     userOSConfig
