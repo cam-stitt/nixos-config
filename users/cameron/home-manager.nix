@@ -150,6 +150,10 @@ in {
       source = ./i3blocks-contrib;
       enable = (isLinux && !isWSL);
     };
+    "code/AGENTS.md" = {
+      enable = true;
+      source = ./code/AGENTS.md;
+    };
   };
 
   xdg.configFile = {
